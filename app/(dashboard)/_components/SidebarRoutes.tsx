@@ -1,4 +1,4 @@
-"use-client"
+"use client"
 
 import { Compass, Layout } from "lucide-react"
 import SidebarItem from "./SidebarItem"
