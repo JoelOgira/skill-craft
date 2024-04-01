@@ -1,16 +1,24 @@
+import Navbar from "./_components/Navbar"
 import Sidebar from "./_components/Sidebar"
 
-export default function DashboardLayout({
+export default function DashBoardLayout({
     children
 }: {
     children: React.ReactNode
 }) {
     return (
-        <div className="min-h-[100svh]">
-            <div className="hidden md:flex h-full w-56 flex-col fixed inset-y-0 z-50">
+        <main className="h-[100svh]">
+            <div className="h-[80px] fixed inset-y-0 w-full z-50 md:pl-56">
+                <Navbar />
+            </div>
+
+            <div className="hidden h-full w-56 flex-col fixed inset-y-0 md:flex">
                 <Sidebar />
             </div>
-            {children}
-        </div>
+
+            <main className="h-full pt-[80px] md:pl-56">
+                {children}
+            </main>
+        </main>
     )
 }
