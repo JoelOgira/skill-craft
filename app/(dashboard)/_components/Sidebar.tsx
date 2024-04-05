@@ -1,12 +1,13 @@
 import Logo from "./Logo"
 import SidebarRoutes from "./SidebarRoutes"
+import Link from "next/link"
 
 export default function Sidebar() {
     return (
         <div className="h-full border-r flex flex-col overflow-y-auto bg-white shadow-sm">
-            <div className="p-6">
+            <Link href="/" className="p-6 cursor-pointer">
                 <Logo />
-            </div>
+            </Link>
             <div className="flex flex-col w-full">
                 <SidebarRoutes />
             </div>
