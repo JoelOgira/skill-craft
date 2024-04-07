@@ -43,7 +43,7 @@ export default function CreateCoursePage() {
             const response = await axios.post("/api/course", values)
             router.push(`/teachers/courses/${response.data.id}`)
         } catch {
-            toast.error("Something went wrong")
+            toast.error("Something went wrong!")
         }
     }
 
