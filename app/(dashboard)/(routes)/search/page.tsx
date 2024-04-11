@@ -2,8 +2,8 @@
 
 export default function SearchPage() {
     return (
-        <div>
+        <main className=" h-[100svh] p-6">
             This is the search page
-        </div>
+        </main>
     )
 }
