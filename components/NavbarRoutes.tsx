@@ -13,7 +13,7 @@ export default function NavbarRoutes() {
     const isPlayerPage = pathname?.includes("/chapter")
 
     return (
-        <nav className="flex items-center gap-x-2 ml-auto">
+        <nav className="flex items-center space-x-2 ml-auto">
             {isTeacherPage || isPlayerPage ? (
                 <Link href="/">
                     <Button size="sm" variant="outline">
