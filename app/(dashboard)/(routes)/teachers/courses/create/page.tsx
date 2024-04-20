@@ -49,9 +49,9 @@ export default function CreateCoursePage() {
     }
 
     return (
-        <main className="min-h-[100svh] max-w-5xl mx-auto flex p-6 md:items-center md:justify-center">
+        <main className="h-full max-w-5xl mx-auto flex p-6 md:items-center md:justify-center">
             <div>
-                <h1 className="text-2xl">
+                <h1 className="text-xl md:text-2xl">
                     Name Your Course
                 </h1>
 
@@ -91,7 +91,7 @@ export default function CreateCoursePage() {
                             <Link href={"/"}>
                                 <Button
                                     type='button'
-                                    variant={"ghost"}
+                                    variant={"destructive"}
                                 >
                                     Cancel
                                 </Button>
