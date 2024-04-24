@@ -2,11 +2,13 @@ import { IconBadge } from "@/components/icon-badge"
 import { db } from "@/lib/db"
 import { auth } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
-import { LayoutDashboard } from "lucide-react"
+import { CircleDollarSign, File, LayoutDashboard, ListChecks } from "lucide-react"
 import TitleForm from "./_components/title-form"
 import DescriptionForm from "./_components/description-form"
 import ImageForm from "./_components/image-form"
 import CategoryForm from "./_components/category-form"
+import PriceForm from "./_components/price-form"
+import AttachmentForm from "./_components/attachment-form"
 
 export default async function CourseIdPage({ params }: { params: { courseId: string } }) {
 
@@ -19,6 +21,13 @@ export default async function CourseIdPage({ params }: { params: { courseId: str
     const course = await db.course.findUnique({
         where: {
             id: params.courseId
+        },
+        include: {
+            attachments: {
+                orderBy: {
+                    createdAt: "desc"
+                }
+            }
         }
     })
 
@@ -83,6 +92,46 @@ export default async function CourseIdPage({ params }: { params: { courseId: str
                             label: category.name, value: category.id
                         }))}
                     />
+                </div>
+
+                <div className="space-y-6" >
+                    <div>
+                        <div className="flex items-center gap-x-2">
+                            <IconBadge size={"default"} icon={ListChecks} />
+                            <h2 className="text-lg">
+                                Course Chapters
+                            </h2>
+                        </div>
+                        <div>
+                            Todo: Chapters
+                        </div>
+                    </div>
+
+                    <div>
+                        <div className="flex items-center gap-x-2">
+                            <IconBadge size={"default"} icon={CircleDollarSign} />
+                            <h2 className="text-lg">
+                                Sell your course
+                            </h2>
+                        </div>
+                        <PriceForm
+                            initialData={course}
+                            courseId={course.id}
+                        />
+                    </div>
+
+                    <div>
+                        <div className="flex items-center gap-x-2">
+                            <IconBadge size={"default"} icon={File} />
+                            <h2 className="text-lg">
+                                Resources and Attachments
+                            </h2>
+                        </div>
+                        <AttachmentForm
+                            initialData={course}
+                            courseId={course.id}
+                        />
+                    </div>
                 </div>
             </div>
         </main>
