@@ -3,9 +3,13 @@ import { authMiddleware } from "@clerk/nextjs";
 // See https://clerk.com/docs/references/nextjs/auth-middleware
 // for more information about configuring your Middleware
 export default authMiddleware({
+    // // Allow signed out users to access the specified routes:
+    // publicRoutes: ["/api/uploadthing" ],
+    // ignoredRoutes: [ "/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/", "/search", "/teachers/courses", "/teachers/courses/create", "api/courses" ]
+
     // Allow signed out users to access the specified routes:
-    publicRoutes: [ '/', '/search', "/teachers/courses", "/teachers/courses/create", "api/courses", "/api/uploadthing" ],
-    ignoredRoutes: [ "/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/", "/search", "/teachers/courses", "/teachers/courses/create", "api/courses" ]
+    publicRoutes: [ "/api/uploadthing" ],
+    ignoredRoutes: [ "/((?!api|trpc))(_next.*|.+\.[\w]+$)", "api/courses" ]
 });
 
 export const config = {
