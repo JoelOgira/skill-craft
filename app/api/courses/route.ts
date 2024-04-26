@@ -7,8 +7,14 @@ export async function POST(
     req: Request
 ) {
     try {
+        const authUser = auth()
 
-        const { userId } = auth()
+        // Ensure userId is not null before proceeding
+        if (!authUser || !authUser.userId) {
+            return new NextResponse("Unauthorized", { status: 401 })
+        }
+
+        const { userId } = authUser
         const { title } = await req.json()
 
         const course = await db.course.create({
