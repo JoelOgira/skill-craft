@@ -90,12 +90,12 @@ export default function AttachmentForm({ initialData, courseId }: AttachmentForm
                                     </div>
                                     <div>
                                         {deletingId === attachment.id && (
-                                            <div className="">
+                                            <div className="flex items-center">
                                                 <Loader2 className='h-4 w-4 animate-spin' />
                                             </div>
                                         )}
                                         {deletingId !== attachment.id && (
-                                            <button onClick={() => handleDelete(attachment.id)}>
+                                            <button className='flex items-center' onClick={() => handleDelete(attachment.id)}>
                                                 <X className='h-4 w-4' />
                                             </button>
                                         )}
