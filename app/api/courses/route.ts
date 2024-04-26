@@ -9,7 +9,6 @@ export async function POST(
     try {
         const authUser = auth()
 
-        // Ensure userId is not null before proceeding
         if (!authUser || !authUser.userId) {
             return new NextResponse("Unauthorized", { status: 401 })
         }
