@@ -9,6 +9,7 @@ import ImageForm from "./_components/image-form"
 import CategoryForm from "./_components/category-form"
 import PriceForm from "./_components/price-form"
 import AttachmentForm from "./_components/attachment-form"
+import ChaptersForm from "./_components/chapter-form"
 
 export default async function CourseIdPage({ params }: { params: { courseId: string } }) {
 
@@ -20,9 +21,15 @@ export default async function CourseIdPage({ params }: { params: { courseId: str
 
     const course = await db.course.findUnique({
         where: {
-            id: params.courseId
+            id: params.courseId,
+            userId: userId
         },
         include: {
+            chapters: {
+                orderBy: {
+                    position: "asc"
+                }
+            },
             attachments: {
                 orderBy: {
                     createdAt: "desc"
@@ -46,7 +53,8 @@ export default async function CourseIdPage({ params }: { params: { courseId: str
         course.description,
         course.imageUrl,
         course.price,
-        course.categoryId
+        course.categoryId,
+        course.chapters.some(chapter => chapter.isPublished)
     ]
 
     const totalFields: number = requiredFields.length
@@ -102,9 +110,10 @@ export default async function CourseIdPage({ params }: { params: { courseId: str
                                 Course Chapters
                             </h2>
                         </div>
-                        <div>
-                            Todo: Chapters
-                        </div>
+                        <ChaptersForm
+                            initialData={course}
+                            courseId={course.id}
+                        />
                     </div>
 
                     <div>
