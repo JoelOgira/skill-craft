@@ -52,7 +52,7 @@ export default function ImageForm({ initialData, courseId }: ImageFormProps) {
                     )}
                     {!isEditing && !initialData?.imageUrl && (
                         <>
-                            <PlusCircle className="h-6 w-6 mr-2" />
+                            <PlusCircle className="h-4 w-4 mr-2" />
                             Add an image
                         </>
                     )}
@@ -83,21 +83,19 @@ export default function ImageForm({ initialData, courseId }: ImageFormProps) {
             )}
 
             {isEditing && (
-                <>
-                    <div>
-                        <FileUpload
-                            endpoint='courseImage'
-                            onChange={(url) => {
-                                if (url) {
-                                    handleSubmit({ imageUrl: url })
-                                }
-                            }}
-                        />
-                        <div className="text-xs text-muted-foreground mt-3">
-                            16:9 aspect ratio recommended
-                        </div>
+                <div>
+                    <FileUpload
+                        endpoint='courseImage'
+                        onChange={(url) => {
+                            if (url) {
+                                handleSubmit({ imageUrl: url })
+                            }
+                        }}
+                    />
+                    <div className="text-xs text-muted-foreground mt-3">
+                        16:9 aspect ratio recommended
                     </div>
-                </>
+                </div>
             )}
         </div>
     )
