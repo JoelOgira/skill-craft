@@ -20,7 +20,7 @@ export default function FileUpload({
                 onChange(res?.[ 0 ].url)
             }}
             onUploadError={(error: Error) => {
-                toast.error(`ERROR! ${error.message}`)
+                toast.error(`ERROR! ${error?.message}`)
             }}
         />
     )
