@@ -48,7 +48,7 @@ export default async function ChapterIdPage({
                         className="flex items-center space-x-2 text-sm hover:opacity-75 transition mb-6"
                     >
                         <ArrowLeft className="h-4 w-4" />
-                        Back to course setup
+                        <span>Back to course setup</span>
                     </Link>
                     <div className="flex items-center justify-between w-full">
                         <div className="flex flex-col space-y-2">
