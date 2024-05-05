@@ -82,7 +82,10 @@ export default function ChaptersForm({ initialData, courseId }: ChaptersFormProp
     }
 
     return (
-        <div className='relative mt-6 border bg-slate-100 rounded-md p-4'>
+        <div className={cn(
+            "mt-6 border bg-slate-100 rounded-md p-4",
+            isUpdating && "relative"
+        )}>
 
             {isUpdating && (
                 <div className='absolute h-full w-full bg-slate-500/20 top-0 right-0 rounded-md flex items-center justify-center'>
