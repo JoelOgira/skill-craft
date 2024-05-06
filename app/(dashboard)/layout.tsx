@@ -7,7 +7,7 @@ export default function DashBoardLayout({
     children: React.ReactNode
 }) {
     return (
-        <main className="min-h-full">
+        <main className="min-h-[100svh]">
             <div className="h-[80px] fixed inset-y-0 w-full z-50 md:pl-56 md:z-0 ">
                 <Navbar />
             </div>
