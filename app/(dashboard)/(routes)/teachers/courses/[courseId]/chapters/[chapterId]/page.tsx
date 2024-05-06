@@ -2,7 +2,10 @@ import { auth } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
 import { db } from "@/lib/db"
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, LayoutDashboard } from "lucide-react";
+import { IconBadge } from "@/components/icon-badge";
+import ChapterTitleForm from "./_components/chapter-title-form"
+import ChapterDescriptionForm from "./_components/chapter-description-form"
 
 export default async function ChapterIdPage({
     params
@@ -40,7 +43,7 @@ export default async function ChapterIdPage({
     const completionText = `(${completedFields}/${totalFields})`
 
     return (
-        <main className="p-6">
+        <main className="p-6 h-[100vh]">
             <div className="flex items-center justify-between">
                 <div className="w-full">
                     <Link
@@ -61,6 +64,79 @@ export default async function ChapterIdPage({
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+                <div className="space-y-4">
+                    <div className="flex items-center gap-x-2">
+                        <IconBadge size={"default"} icon={LayoutDashboard} />
+                        <h2 className="text-lg">
+                            Customize your chapter
+                        </h2>
+                    </div>
+                    <ChapterTitleForm
+                        initialData={chapter}
+                        chapterId={params.chapterId}
+                        courseId={params.courseId}
+                    />
+                    <ChapterDescriptionForm
+                        initialData={chapter}
+                        chapterId={params.chapterId}
+                        courseId={params.courseId}
+                    />
+                    {/* <ImageForm
+                        initialData={course}
+                        courseId={course.id}
+                    /> */}
+                    {/* <CategoryForm
+                        initialData={course}
+                        courseId={course.id}
+                        options={categories.map((category) => ({
+                            label: category.name, value: category.id
+                        }))}
+                    /> */}
+                </div>
+
+                {/* <div className="space-y-6" >
+                    <div>
+                        <div className="flex items-center gap-x-2">
+                            <IconBadge size={"default"} icon={ListChecks} />
+                            <h2 className="text-lg">
+                                Course Chapters
+                            </h2>
+                        </div>
+                        <ChaptersForm
+                            initialData={course}
+                            courseId={course.id}
+                        />
+                    </div>
+
+                    <div>
+                        <div className="flex items-center gap-x-2">
+                            <IconBadge size={"default"} icon={CircleDollarSign} />
+                            <h2 className="text-lg">
+                                Sell your course
+                            </h2>
+                        </div>
+                        <PriceForm
+                            initialData={course}
+                            courseId={course.id}
+                        />
+                    </div>
+
+                    <div>
+                        <div className="flex items-center gap-x-2">
+                            <IconBadge size={"default"} icon={File} />
+                            <h2 className="text-lg">
+                                Resources and Attachments
+                            </h2>
+                        </div>
+                        <AttachmentForm
+                            initialData={course}
+                            courseId={course.id}
+                        />
+                    </div>
+                </div> */}
             </div>
         </main>
     )
