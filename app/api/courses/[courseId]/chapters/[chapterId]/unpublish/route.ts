@@ -29,7 +29,7 @@ export async function PATCH(
             return new NextResponse("Unauthorized", { status: 401 })
         }
 
-        const unPublishedChapter = await db.chapter.update({
+        const unpublishedChapter = await db.chapter.update({
             where: {
                 id: chapterId,
                 courseId
@@ -39,7 +39,25 @@ export async function PATCH(
             }
         })
 
-        return NextResponse.json(unPublishedChapter)
+        const publishedChaptersInCourse = await db.chapter.findMany({
+            where: {
+                id: chapterId,
+                isPublished: true
+            }
+        })
+
+        if (!publishedChaptersInCourse.length) {
+            await db.course.update({
+                where: {
+                    id: courseId
+                },
+                data: {
+                    isPublished: false
+                }
+            })
+        }
+
+        return NextResponse.json(unpublishedChapter)
 
     } catch (error) {
         console.log("CHAPTER_PUBLISH", error)
