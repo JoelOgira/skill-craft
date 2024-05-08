@@ -27,13 +27,11 @@ export default function ChapterActions({
             if (isPublished) {
                 await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}/unpublish`)
                 toast.success("Chapter Unpublished")
-                router.refresh()
             } else {
                 await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}/publish`)
                 toast.success("Chapter Published")
-                router.refresh()
             }
-
+            router.refresh()
         } catch (error) {
             toast.error("Something went wrong")
         } finally {
