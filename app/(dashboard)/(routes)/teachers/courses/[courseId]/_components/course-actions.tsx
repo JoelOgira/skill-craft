@@ -46,8 +46,8 @@ export default function CourseActions({
             setIsLoading(true)
             await axios.delete(`/api/courses/${courseId}`)
             toast.success("Chapter deleted")
-            router.refresh()
             router.push(`/teachers/courses`)
+            router.refresh()
         } catch {
             toast.error("Something went wrong")
         } finally {
