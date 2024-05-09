@@ -56,12 +56,6 @@ export default async function ChapterIdPage({
                     label="This chapter is not yet published. It will not be visible in the course."
                 />
             )}
-            {chapter?.isPublished && (
-                <Banner
-                    variant="success"
-                    label="This chapter is published. It will now be visible in the course."
-                />
-            )}
             <main className="p-6">
                 <Link
                     href={`/teachers/courses/${params.courseId}`}
