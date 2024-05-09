@@ -74,14 +74,6 @@ export default async function CourseIdPage({ params }: { params: { courseId: str
                 />
             )
             }
-            {
-                course?.isPublished && (
-                    <Banner
-                        variant="success"
-                        label="This course is published. It will now be visible to the students."
-                    />
-                )
-            }
             <main className="p-6">
                 <div className="flex items-center justify-between">
                     <div className="flex flex-col space-y-2">
