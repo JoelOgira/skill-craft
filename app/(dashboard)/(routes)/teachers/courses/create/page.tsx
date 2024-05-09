@@ -49,7 +49,7 @@ export default function CreateCoursePage() {
     }
 
     return (
-        <main className="h-full max-w-5xl mx-auto flex p-6 md:items-center md:justify-center">
+        <main className="h-full max-w-5xl mx-auto flex p-6 items-center justify-center">
             <div>
                 <h1 className="text-xl md:text-2xl">
                     Name Your Course
