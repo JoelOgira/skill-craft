@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Trash } from 'lucide-react'
 import toast from 'react-hot-toast'
 import axios from 'axios'
+import { useConfettiStore } from '@/hooks/use-confetti-store'
 
 type CourseActionsProps = {
     disabled: boolean,
@@ -18,6 +19,7 @@ export default function CourseActions({
     disabled, courseId, isPublished
 }: CourseActionsProps) {
     const router = useRouter()
+    const confetti = useConfettiStore()
     const [isLoading, setIsLoading] = useState(false)
 
     const onClick = async () => {
@@ -29,6 +31,7 @@ export default function CourseActions({
             } else {
                 await axios.patch(`/api/courses/${courseId}/publish`)
                 toast.success("Course Published")
+                confetti.onOpen()
             }
             router.refresh()
         } catch (error) {
