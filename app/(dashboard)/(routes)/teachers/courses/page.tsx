@@ -23,7 +23,7 @@ export default async function CoursesPage() {
 
     return (
         <main className="p-6">
-            <div className="container">
+            <div className="container mx-auto">
                 <DataTable columns={columns} data={courses} />
             </div>
         </main>
